@@ -1,0 +1,6 @@
+grafana/*
+prometheus/*
+node_exporter/*
+vmstat_collector/*.prom
+vmstat_collector/*.temp
+**/*.log
