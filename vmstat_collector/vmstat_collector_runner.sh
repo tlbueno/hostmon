@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-scrap="${PWD}/metrics"
+scrap="${PWD}/vmstat_collector/metrics"
 
 function log {
     echo "$(date +"%m/%d/%Y %H:%M:%S") - $*"
@@ -11,7 +11,7 @@ while true ; do
     log "Waiting until next execution..."
     sleep 2
 
-    ./vmstat.sh > "$scrap.temp" 
+    ./vmstat_collector/vmstat.sh > "$scrap.temp" 
 
     log "Moving temp metrics to final metrics so prometheus can scrap it..."
     mv "$scrap.temp" "$scrap.prom"
