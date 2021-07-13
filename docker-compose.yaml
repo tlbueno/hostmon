@@ -1,0 +1,23 @@
+version: '3.3'
+services:
+    grafana:
+        container_name: grafana
+        ports:
+            - '3000:3000'
+        networks: 
+            - 'monitoring'
+        volumes:
+            - '${PWD}/grafana/etc:/etc/grafana:Z'
+            - '${PWD}/grafana/data:/var/lib/grafana:Z'
+        image: grafana/grafana
+    prometheus:
+        container_name: prometheus
+        ports:
+            - '9090:9090'
+        networks: 
+            - 'monitoring'
+        volumes:
+            - '${PWD}/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:Z'
+        image: prom/prometheus
+networks:
+  monitoring:
